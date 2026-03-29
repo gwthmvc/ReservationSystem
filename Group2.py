@@ -1,3 +1,8 @@
+
+# Gowtham Velicheti 0892430
+# Darren Billy
+# Manisha Chettri
+
 # Import required libraries
 import json                 # Used to read and write JSON files
 import os                   # Used to check if files exist

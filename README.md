@@ -21,7 +21,7 @@ A command-line Hotel Reservation Management System built in Python using object-
 
 ## How to Run
 
-Make sure all three `.py` files are in the same directory, then run one of these commands:
+Make sure all `.py` files are in the same directory, then run one of these commands:
 
 ```bash
 python Group2.py 
@@ -35,7 +35,6 @@ No external libraries required — uses Python standard library only.
 ## Team Contributions
 
 ### Manisha — Exceptions & Data Entities
-**File:** `exceptions_entities.py`
 
 Responsible for the foundational layer of the program that all other modules depend on.
 
@@ -46,7 +45,6 @@ Responsible for the foundational layer of the program that all other modules dep
 ---
 
 ### Gowtham — Storage Layer & System Core
-**File:** `storage_system.py`
 
 Responsible for all data persistence and the core system controller, including user authentication.
 
@@ -58,7 +56,6 @@ Responsible for all data persistence and the core system controller, including u
 ---
 
 ### Darren — User Dashboard & Reservation Features
-**File:** `reservation_features.py`
 
 Responsible for all user-facing features after login, and the program's main entry point.
 

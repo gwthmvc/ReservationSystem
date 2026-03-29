@@ -11,10 +11,10 @@ A command-line Hotel Reservation Management System built in Python using object-
 
 ```
 ├── Group2.py                 # Main program — all modules combined
-├── UML Diagram.png           # UML class diagram of the system
 ├── README.md                 # Project documentation
-├── users.json                # Auto-generated on first run
-└── reservations.json         # Auto-generated on first run
+├── UML Diagram.png           # UML class diagram of the system
+├── reservations.json         # Auto-generated on first run
+└── users.json                # Auto-generated on first run
 ```
 
 ---

@@ -74,9 +74,8 @@ Responsible for all user-facing features after login, and the program's main ent
 
 | Concept | Where Applied |
 |---------|--------------|
-| Custom Exceptions | `exceptions_entities.py` — 5 domain-specific exception classes |
+| Custom Exceptions | 5 domain-specific exception classes |
 | Dataclasses | `Customer` and `Reservation` with auto-generated `__init__` and `__repr__` |
 | Encapsulation | `verify_password()` inside `Customer`; `_get_input()` as a private helper |
 | Single Responsibility | `StorageManager` handles only persistence; `ReservationSystem` handles only logic |
-| Inheritance | `FullReservationSystem` extends `ReservationSystem` with dashboard features |
 | Composition | `ReservationSystem` owns a `StorageManager` instance |

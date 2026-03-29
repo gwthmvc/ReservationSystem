@@ -5,5 +5,12 @@
         "lname": "last",
         "password": "password",
         "dob": "12/12/1212"
+    },
+    "a@b.c": {
+        "email": "a@b.c",
+        "fname": "F",
+        "lname": "L",
+        "password": "password",
+        "dob": "12/12/1212"
     }
 }

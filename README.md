@@ -21,7 +21,7 @@ A command-line Hotel Reservation Management System built in Python using object-
 
 ## How to Run
 
-Make sure all three `.py` files are in the same directory, then run:
+Make sure all three `.py` files are in the same directory, then run one of these commands:
 
 ```bash
 python Group2.py 

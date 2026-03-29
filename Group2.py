@@ -162,11 +162,30 @@ class ReservationSystem:
             except ValueError:
                 print("Error: Please enter a whole number.")
 
+    def _validate_email(self, value):
+        if "@" not in value or "." not in value.split("@")[-1]:
+            raise EmptyFieldError("Invalid email format. Must contain '@' and a domain.")
+
+    def _validate_name(self, value):
+        if not value.replace("-", "").replace("'", "").isalpha():
+            raise EmptyFieldError("Name must contain letters only.")
+
+    def _validate_dob(self, value):
+        parts = value.split("-")
+        if len(parts) != 3 or not all(p.isdigit() for p in parts):
+            raise EmptyFieldError("Date of Birth must be in YYYY-MM-DD format.")
+
     def register(self):
         print("\n“Registration In-Process”")
 
         # Get email
-        email = self._get_input("a. Email").lower()
+        while True:
+            email = self._get_input("a. Email").lower()
+            try:
+                self._validate_email(email)
+                break
+            except EmptyFieldError as e:
+                print(f"Error: {e}")
 
         # Check if account already exists
         if email in self.storage.load_users():
@@ -174,10 +193,31 @@ class ReservationSystem:
             return
 
         # Get user details
-        fname = self._get_input("b. First Name")
-        lname = self._get_input("c. Last Name")
+        while True:
+            fname = self._get_input("b. First Name")
+            try:
+                self._validate_name(fname)
+                break
+            except EmptyFieldError as e:
+                print(f"Error: {e}")
+
+        while True:
+            lname = self._get_input("c. Last Name")
+            try:
+                self._validate_name(lname)
+                break
+            except EmptyFieldError as e:
+                print(f"Error: {e}")
+
         password = getpass("d. Password")  # Hidden input
-        dob = self._get_input("e. Date of Birth")
+
+        while True:
+            dob = self._get_input("e. Date of Birth(YYYY-MM-DD)")
+            try:
+                self._validate_dob(dob)
+                break
+            except EmptyFieldError as e:
+                print(f"Error: {e}")
 
         # Confirm or exit
         while True:

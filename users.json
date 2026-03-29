@@ -12,5 +12,12 @@
         "lname": "L",
         "password": "password",
         "dob": "12/12/1212"
+    },
+    "a@a.c": {
+        "email": "a@a.c",
+        "fname": "abced",
+        "lname": "fdfd",
+        "password": "password",
+        "dob": "1212-12-12"
     }
 }

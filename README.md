@@ -1,6 +1,6 @@
 
 
-# Restaurant Reservation System 
+# Restaurant Reservation System
 ### COIS-2040H — OOP Python Group Project
 
 A command-line Hotel Reservation Management System built in Python using object-oriented programming principles including custom exceptions, dataclasses, inheritance, encapsulation, and a JSON-based persistence layer.
@@ -49,7 +49,6 @@ Responsible for the foundational layer of the program that all other modules dep
 Responsible for all data persistence and the core system controller, including user authentication.
 
 - Built the `StorageManager` class to handle all reading and writing to `users.json` and `reservations.json`, including a `_prepare_files()` method that initializes missing files on startup to prevent crashes on a fresh install
-- Implemented `load_users()` using `**kwargs` unpacking to reconstruct `Customer` objects from JSON, and `save_user()` using `asdict()` from the `dataclasses` module to serialize objects back to disk — applying the single-responsibility principle by keeping storage logic separate from business logic
 - Implemented `save_reservation()` and `delete_reservation()` methods with safe file read-modify-write cycles
 - Built the `ReservationSystem` base class with `__init__` (instantiates `StorageManager`, tracks `active_user`), the reusable `_get_input()` helper (handles `EmptyFieldError` and `ValueError` in a loop), `register()` with duplicate-email detection and `InvalidRegistrationChoiceError` handling, and `login()` with password verification and a retry/register/exit recovery loop
 

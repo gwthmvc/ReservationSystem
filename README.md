@@ -24,7 +24,8 @@ A command-line Hotel Reservation Management System built in Python using object-
 Make sure all three `.py` files are in the same directory, then run:
 
 ```bash
-python Group2.py
+python Group2.py 
+python3 Group2.py 
 ```
 
 No external libraries required — uses Python standard library only.

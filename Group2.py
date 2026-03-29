@@ -406,13 +406,13 @@ class ReservationSystem:
 
     def run(self):
         # Display welcome message
-        print("*********************************************")
+        print("\n*********************************************")
         print("* Welcome to the Object Reservation System  *")
         print("*********************************************")
 
         # Main menu loop
         while True:
-            print("\n=== MAIN MENU ===\na. Register/signup\nb. Login\nc. Exit")
+            print("\n=== MAIN MENU ===\n\na. Register/signup\nb. Login\nc. Exit")
 
             choice = input("Selection: ").lower()
 

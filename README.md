@@ -1,7 +1,7 @@
 
 
 # Restaurant Reservation System
-### COIS-1020H — OOP Python Group Project
+### COIS-2020H — OOP Python Group Project
 
 A command-line Hotel Reservation Management System built in Python using object-oriented programming principles including custom exceptions, dataclasses, inheritance, encapsulation, and a JSON-based persistence layer.
 

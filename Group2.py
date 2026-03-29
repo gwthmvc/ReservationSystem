@@ -6,10 +6,10 @@ from getpass import getpass # Used to hide password input
 
 
 # --- 1. Custom Exceptions ---
-# These are custom error types used for better validation
+# These are custom errors I created to handle invalid user inputs
 
 class InvalidOptionError(Exception):
-    """Raised when a user enters an option not in the menu."""
+    """This error is used when the user selects an option that doesn’t exist."""
     pass
 
 class EmptyFieldError(Exception):
@@ -30,17 +30,17 @@ class InvalidDeletionChoiceError(Exception):
 
 
 # --- 2. Data Classes (Entities) ---
-# These classes store data only (no complex logic)
+# These classes just store user and reservation data
 
 @dataclass
 class Customer:
-    email: str       # Stores email
+    email: str       # user's email
     fname: str       # First name
     lname: str       # Last name
     password: str    # Password
     dob: str         # Date of birth
 
-    # Check if password entered matches stored password
+    # Checks if the entered password matches the saved one (used during login)
     def verify_password(self, pwd):
         return self.password == pwd
 
@@ -142,7 +142,7 @@ class ReservationSystem:
         self.active_user = None
 
     def _get_input(self, prompt, is_numeric=False):
-        """Gets user input and validates it."""
+        """Takes input from the user and makes sure it's valid before continuing."""
 
         while True:
             try:

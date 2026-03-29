@@ -66,3 +66,91 @@ def login_user(system):
                 elif choice == '3': break
                 else: raise InvalidOptionError("Invalid choice.")
             except InvalidOptionError as e: print(e)
+
+
+@dataclass
+class Reservation:
+    email: str
+    num_days: int
+    from_date: str
+    to_date: str
+    num_persons: int
+    num_rooms: int
+
+class StorageManager:
+    def __init__(self):
+        self.user_file = "users.json"
+        self.res_file = "reservations.json"
+        self._prepare_files()
+
+    def _prepare_files(self):
+        for filename in [self.user_file, self.res_file]:
+            if not os.path.exists(filename) or os.path.getsize(filename) == 0:
+                with open(filename, 'w') as f: json.dump({}, f)
+
+    def load_users(self):
+        with open(self.user_file, 'r') as f:
+            data = json.load(f)
+            return {e: Customer(**d) for e, d in data.items()}
+
+    def save_user(self, customer):
+        users_data = self.load_users() # Simplified for this block
+        users_data[customer.email] = asdict(customer)
+        with open(self.user_file, 'w') as f: json.dump(users_data, f, indent=4)
+
+    def load_reservations(self):
+        with open(self.res_file, 'r') as f: return json.load(f)
+
+    def save_reservation(self, reservation):
+        res_data = self.load_reservations()
+        res_data[reservation.email] = asdict(reservation)
+        with open(self.res_file, 'w') as f: json.dump(res_data, f, indent=4)
+
+    def delete_reservation(self, email):
+        res_data = self.load_reservations()
+        if res_data.pop(email, None):
+            with open(self.res_file, 'w') as f: json.dump(res_data, f, indent=4)
+
+# --- Logic for ReservationSystem Class ---
+def view_res(self):
+    res = self.storage.load_reservations().get(self.active_user.email)
+    if res:
+        print(f"\n--- Current Reservation for {self.active_user.email} ---")
+        for k, v in res.items(): print(f"{k.replace('_', ' ').title()}: {v}")
+    else: print("\nNo reservation found")
+
+def manage_res(self, mode):
+    current_res = self.storage.load_reservations().get(self.active_user.email)
+    if mode == "Modify" and not current_res:
+        print("\nError: No existing reservation found to modify."); return
+
+    fields = [("Number of days", "num_days", True), ("From Date", "from_date", False), 
+              ("To Date", "to_date", False), ("Number of Persons", "num_persons", True), 
+              ("Number of rooms", "num_rooms", True)]
+
+    if mode == "Modify":
+        updated_data = current_res.copy()
+        while True:
+            choice = input("\nEnter an option to modify (1-7): ")
+            if choice in '12345':
+                idx = int(choice) - 1
+                label, key, is_num = fields[idx]
+                updated_data[key] = self._get_input(f"Enter new {label}", is_num)
+            elif choice == '6':
+                self.storage.save_reservation(Reservation(**updated_data))
+                print("Changes Saved!"); return
+            elif choice == '7': return
+    else:
+        # 'Make' logic
+        days = self._get_input("i. Number of days", True)
+        # ... (rest of input gathering)
+        self.storage.save_reservation(Reservation(self.active_user.email, days, "...", "...", 1, 1))
+
+def cancel_res(self):
+    res_data = self.storage.load_reservations()
+    if self.active_user.email not in res_data:
+        print("\nNo reservation found to cancel."); return
+    choice = input("Confirm Delete? (Y/N): ").strip().upper()
+    if choice == 'Y':
+        self.storage.delete_reservation(self.active_user.email)
+        print(">>> Reservation Deleted Successfully.")

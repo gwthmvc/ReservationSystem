@@ -412,7 +412,7 @@ class ReservationSystem:
 
         # Main menu loop
         while True:
-            print("\n=== MAIN MENU ===\n\na. Register/signup\nb. Login\nc. Exit")
+            print("\n=== MAIN MENU ===\n\na. Register/signup\nb. Login\nc. Exit\n")
 
             choice = input("Selection: ").lower()
 

@@ -141,20 +141,30 @@ class ReservationSystem:
         # No user logged in at start
         self.active_user = None
 
+
+#_get_input method
+
+
     def _get_input(self, prompt, is_numeric=False):
         """Takes input from the user and makes sure it's valid before continuing."""
 
         while True:
             try:
-                # Get input and remove extra spaces
+                # take input and remove extra spaces
                 value = input(f"{prompt}: ").strip()
 
-                # Check if empty
+                # if user leaves it blank, show error
                 if not value:
                     raise EmptyFieldError("Please fill all the data for registration.")
 
-                # Convert to number if needed
-                return int(value) if is_numeric else value
+                # convert to number if this input should be numeric
+            
+                if is_numeric:
+                    if not value.isdigit():
+                        raise ValueError("Only numbers allowed")
+                    return int(value)
+
+                return value
 
             except EmptyFieldError as e:
                 print(f"Error: {e}")

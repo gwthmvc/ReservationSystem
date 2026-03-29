@@ -19,5 +19,12 @@
         "lname": "fdfd",
         "password": "password",
         "dob": "1212-12-12"
+    },
+    "manisha@gmail.com": {
+        "email": "manisha@gmail.com",
+        "fname": "manisha",
+        "lname": "c",
+        "password": "manishajmansihc",
+        "dob": "2002-02-02"
     }
 }

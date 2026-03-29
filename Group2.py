@@ -3,10 +3,18 @@ import os
 from dataclasses import dataclass, asdict
 
 
+# --- 1. Custom Exceptions ---
+class InvalidOptionError(Exception):
+    pass
+class EmptyFieldError(Exception):
+    pass
 class InvalidRegistrationChoiceError(Exception):
     pass
-class InvalidOptionError:
+class InvalidReservationConfirmationError(Exception):
     pass
+class InvalidDeletionChoiceError(Exception):
+    pass
+
 
 @dataclass
 class Customer:
@@ -154,3 +162,39 @@ def cancel_res(self):
     if choice == 'Y':
         self.storage.delete_reservation(self.active_user.email)
         print(">>> Reservation Deleted Successfully.")
+
+
+# --- System Controller ---
+class ReservationSystem:
+    def _init_(self):
+        self.storage = StorageManager()
+        self.active_user = None
+
+    def _get_input(self, prompt, is_numeric=False):
+        while True:
+            try:
+                value = input(f"{prompt}: ").strip()
+                if not value: raise EmptyFieldError("Please fill all the data.")
+                return int(value) if is_numeric else value
+            except (EmptyFieldError, ValueError) as e: print(f"Error: {e}")
+
+    def user_dashboard(self):
+        while True:
+            print(f"\n--- WELCOME, {self.active_user.fname.upper()} ---")
+            print("a. View Reservation\nb. Make/Modify\ne. Cancel\nf. Logout")
+            choice = input("Selection: ").lower()
+            if choice == 'a': view_res(self)
+            elif choice == 'b': manage_res(self, "Make")
+            elif choice == 'e': cancel_res(self)
+            elif choice == 'f': self.active_user = None; break
+
+    def run(self):
+        while True:
+            print("\n=== MAIN MENU ===\na. Register\nb. Login\nc. Exit")
+            choice = input("Selection: ").lower()
+            if choice == 'a': register_user(self)
+            elif choice == 'b': login_user(self)
+            elif choice == 'c': break
+
+if __name__ == "_main_":
+    ReservationSystem().run()

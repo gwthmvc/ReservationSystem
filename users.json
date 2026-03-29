@@ -1,1 +1,9 @@
-{}
+{
+    "abc@abc.com": {
+        "email": "abc@abc.com",
+        "fname": "First",
+        "lname": "last",
+        "password": "password",
+        "dob": "12/12/1212"
+    }
+}

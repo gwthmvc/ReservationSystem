@@ -1,6 +1,7 @@
 import json
 import os
 from dataclasses import dataclass, asdict
+from getpass import getpass
 
 # --- 1. Custom Exceptions ---
 class InvalidOptionError(Exception):
@@ -113,7 +114,7 @@ class ReservationSystem:
 
         fname = self._get_input("b. First Name")
         lname = self._get_input("c. Last Name")
-        password = self._get_input("d. Password")
+        password = getpass("d. Password")
         dob = self._get_input("e. Date of Birth")
 
         while True:
@@ -134,7 +135,7 @@ class ReservationSystem:
     def login(self):
         print("\n--- Login ---")
         email = input("Enter your Email: ").strip().lower()
-        password = input("Enter your Password: ").strip()
+        password = getpass("Enter your Password: ").strip()
 
         users = self.storage.load_users()
         user = users.get(email)

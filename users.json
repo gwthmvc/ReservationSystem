@@ -26,5 +26,12 @@
         "lname": "c",
         "password": "manishajmansihc",
         "dob": "2002-02-02"
+    },
+    "abc@b.com": {
+        "email": "abc@b.com",
+        "fname": "First",
+        "lname": "Last",
+        "password": "password",
+        "dob": "1996-09-12"
     }
 }

@@ -11,7 +11,7 @@ A command-line Hotel Reservation Management System built in Python using object-
 
 ```
 ├── Group2.py                 # Main program — all modules combined
-├── Class Diagram.png         # UML class diagram of the system
+├── UML Diagram.png           # UML class diagram of the system
 ├── README.md                 # Project documentation
 ├── users.json                # Auto-generated on first run
 └── reservations.json         # Auto-generated on first run
@@ -24,7 +24,7 @@ A command-line Hotel Reservation Management System built in Python using object-
 Make sure all three `.py` files are in the same directory, then run:
 
 ```bash
-python rest.py
+python Group2.py
 ```
 
 No external libraries required — uses Python standard library only.
